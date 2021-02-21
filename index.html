@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -6,11 +7,104 @@
         <meta name="author" content="Chafik El idrissi">
         <meta name="description" content="">
         <meta name="description" content="">
-        <script src="/js/main.js"></script>
-        <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
-        <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
-        <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/5d6074bd96.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./js/main.js"></script>
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Bienvenue sur Goweb !</title>
     </head>
-    <body></body>
+    <body>
+        <div class="banner bg-red txt-white txt-center">
+            Découvrez le nouveau site intenet de Goweb ! Entrez dans la famille ! 
+            <i class="fas fa-times" onclick="closeBanner()"></i>
+        </div>
+        <div class="grid">
+            <div class="grid_header_logo"> 
+                <a id="goweb-logo" href="./index.html">
+                    <span class="sr-only">Goweb</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="130.89" height="29.916">
+                        <g data-name="goweb_logo">
+                            <path class="bigLetter" data-name="goweb_g" d="M16.736 14.425l1.506-.234h2.845l1.473.234-2.477 14.29a18.441 18.441 0 0 1-3.983.87 19.736 19.736 0 0 1-4.284.3 14.838 14.838 0 0 1-5.12-.87 10.027 10.027 0 0 1-3.715-2.475 9.523 9.523 0 0 1-2.242-3.347 12.34 12.34 0 0 1-.738-4.417 22.917 22.917 0 0 1 1.171-7.329A18.671 18.671 0 0 1 4.52 5.49a15.239 15.239 0 0 1 4.987-4.016A14.94 14.94 0 0 1 16.201 0a22.382 22.382 0 0 1 3.347.234 12.151 12.151 0 0 1 3.012.937 18.353 18.353 0 0 1-.636 2.343 20.859 20.859 0 0 1-1.037 2.343 10.864 10.864 0 0 0-2.309-.669 13.919 13.919 0 0 0-2.041-.167 8.837 8.837 0 0 0-4.585 1.171 9.733 9.733 0 0 0-3.151 3.046 13.859 13.859 0 0 0-1.8 4.217 19.252 19.252 0 0 0-.64 4.785 6.321 6.321 0 0 0 1.707 4.953 6.7 6.7 0 0 0 4.518 1.473h2.276z" fill="url(#gradientBigLetters)"></path>
+                            <path class="littleLetter" data-name="goweb_o" d="M33.469 29.888a7.769 7.769 0 0 1-6.091-2.175 8.54 8.54 0 0 1-1.941-5.957 16.661 16.661 0 0 1 .7-4.819 14.56 14.56 0 0 1 2.175-4.384 11.592 11.592 0 0 1 3.648-3.347 10.487 10.487 0 0 1 5.12-1.2 7.687 7.687 0 0 1 6.124 2.209 8.54 8.54 0 0 1 1.941 5.957 17.465 17.465 0 0 1-.7 4.92 13.012 13.012 0 0 1-2.142 4.317 10.519 10.519 0 0 1-3.648 3.112 10.438 10.438 0 0 1-5.186 1.367zm.5-4.351a3.347 3.347 0 0 0 2.577-.971 7.041 7.041 0 0 0 1.709-2.378 10.825 10.825 0 0 0 .937-3.012 13.87 13.87 0 0 0 .3-2.878c0-2.443-1-3.681-3.012-3.681a3.342 3.342 0 0 0-2.543 1 8.04 8.04 0 0 0-1.64 2.443 12.226 12.226 0 0 0-.9 3.045 20.766 20.766 0 0 0-.268 2.845c0 2.376 1 3.547 2.878 3.547z" fill="url(#gradientLittleLetters)"></path>
+                            <path class="littleLetter" data-name="goweb_w" d="M48.629 8.603a22.382 22.382 0 0 1 3.347-.235h1.372a9.043 9.043 0 0 1 1.372.2l.535 14.625 5.991-14.59a15.1 15.1 0 0 1 2.744-.235 16.974 16.974 0 0 1 2.912.234l1.138 14.591 3.882-9.035a13.573 13.573 0 0 0 .937-2.778 10.378 10.378 0 0 0 .234-2.012v-.77a19.983 19.983 0 0 1 6.091 0 9.092 9.092 0 0 1-.435 2.677 24.233 24.233 0 0 1-1.439 3.347l-7.5 14.725a13.542 13.542 0 0 1-1.64.2h-1.703a13.825 13.825 0 0 1-2.878-.2l-1.071-13.179-5.619 13.184-1.606.167H52.21l-1.406-.2z" fill="url(#gradientLittleLetters)"></path>
+                            <path class="littleLetter" data-name="goweb_e" d="M85.777 21.487a4.485 4.485 0 0 0 1.305 2.878 4.218 4.218 0 0 0 3.046.938 9.967 9.967 0 0 0 2.811-.335c.87-.268 1.774-.569 2.61-.9a4.68 4.68 0 0 1 .87 1.941 14.915 14.915 0 0 1 .2 2.443 9.005 9.005 0 0 1-1.573.569 17.094 17.094 0 0 1-1.874.435 19.016 19.016 0 0 1-1.941.3h-1.703a12.779 12.779 0 0 1-4.217-.6 8.086 8.086 0 0 1-2.883-1.712 6.2 6.2 0 0 1-1.673-2.711 10.368 10.368 0 0 1-.569-3.347 14.32 14.32 0 0 1 .87-4.886 13.368 13.368 0 0 1 2.376-4.217 12.24 12.24 0 0 1 3.782-3.012 10.7 10.7 0 0 1 4.987-1.138 10.3 10.3 0 0 1 2.477.3 5.238 5.238 0 0 1 1.975 1 4.484 4.484 0 0 1 1.807 3.715 5.754 5.754 0 0 1-.832 3.155 7.1 7.1 0 0 1-2.242 2.242 11.183 11.183 0 0 1-3.179 1.506 23.122 23.122 0 0 1-3.715.87zm2.309-4.084a12.94 12.94 0 0 0 2.477-.636 5.538 5.538 0 0 0 1.506-.837 2.355 2.355 0 0 0 .77-.937 2.412 2.412 0 0 0 .2-.971 1.614 1.614 0 0 0-.5-1.238 1.808 1.808 0 0 0-1.339-.5 4.206 4.206 0 0 0-1.908.469 5.326 5.326 0 0 0-1.506 1.238 7.334 7.334 0 0 0-1.1 1.74 10.585 10.585 0 0 0-.708 1.972z" fill="url(#gradientLittleLetters)"></path>
+                            <path class="bigLetter" data-name="goweb_b" d="M104.351 7.801a41 41 0 0 0 .7-6.392V.001h3.079a13.069 13.069 0 0 1 2.58.235 5.981 5.981 0 0 1 .2 1.539 23.209 23.209 0 0 1-.469 4.049l-1 5.589a10.832 10.832 0 0 1 1-1.171 6.067 6.067 0 0 1 1.373-1.071 6.749 6.749 0 0 1 1.74-.77 7.8 7.8 0 0 1 2.343-.268 5.088 5.088 0 0 1 4.317 1.908 8.947 8.947 0 0 1 1.506 5.589 17.007 17.007 0 0 1-.736 5.02 12.58 12.58 0 0 1-2.41 4.585 12.329 12.329 0 0 1-4.514 3.347 16.73 16.73 0 0 1-6.961 1.305 16.06 16.06 0 0 1-3.347-.335 18.852 18.852 0 0 1-2.979-.87zm2.744 17.068h1.841a5.7 5.7 0 0 0 3.045-.8 7.369 7.369 0 0 0 2.079-2.114 10.671 10.671 0 0 0 1.2-2.778 11.8 11.8 0 0 0 .268-2.677 4.781 4.781 0 0 0-.569-2.443 2.1 2.1 0 0 0-1.975-1 3.956 3.956 0 0 0-3.179 1.573 10.577 10.577 0 0 0-1.945 5.217z" fill="url(#gradientBigLetters)"></path>
+                            <path class="point" data-name="goweb_point" d="M125.028 23.495a11.532 11.532 0 0 1 1.506-.3 13.789 13.789 0 0 1 2.878 0 10.892 10.892 0 0 1 1.473.2 16.312 16.312 0 0 1-.368 3.146 27.686 27.686 0 0 1-.736 2.878 7.748 7.748 0 0 1-1.539.234h-2.875a7.049 7.049 0 0 1-1.539-.234 16.381 16.381 0 0 1 .435-2.878 30.719 30.719 0 0 1 .765-3.046z" fill="url(#gradientPoint)"></path>
+                            <defs>
+                              <linearGradient id="gradientBigLetters" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#000"></stop>
+                                <stop offset="50%" stop-color="#000"></stop>
+                                <stop offset="50%" stop-color="#000"></stop>
+                                <stop offset="100%" stop-color="#000"></stop>
+                              </linearGradient>
+                              <linearGradient id="gradientLittleLetters" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#000"></stop>
+                                <stop offset="50%" stop-color="#000"></stop>
+                                <stop offset="50%" stop-color="#000"></stop>
+                                <stop offset="100%" stop-color="#000"></stop>
+                              </linearGradient>
+                              <linearGradient id="gradientPoint" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#ff445f"></stop>
+                                <stop offset="50%" stop-color="#ff445f"></stop>
+                                <stop offset="50%" stop-color="#ff445f"></stop>
+                                <stop offset="100%" stop-color="#ff445f"></stop>
+                              </linearGradient>
+                            </defs>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="grid_header_cart">
+                Panier (0)
+            </div>
+            <div class="grid_menu">
+                <ul>
+                    <li><a href="./">Home</a></li>
+                    <li><a href="./">HOMME <i class="fas fa-caret-down"></i></a></li>
+                    <li><a href="./">FEMME <i class="fas fa-caret-down"></i></a></li>
+                    <li><a href="./">MAISON</a></li>
+                    <li><a href="./">JARDIN</a></li>
+                    <li><a href="./">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="grid_preview_main"> PREVIEW MAIN </div>
+            <div class="grid_preview_second"> PREVIEW SECOND </div>
+            <div class="grid_description"> DESCRIPTION </div>
+            <div class="grid_selection"> SELECTION
+                <div class="selectors">
+                    <label for="color"> Couleur: </label>
+                    <select id="colors" name="color">
+                        <option value="colorA">colorA</option>
+                        <option value="colorB">colorB</option>
+                        <option value="colorC">colorC</option>
+                        <option value="colorD">colorD</option>
+                        <option value="colorE">colorE</option>
+                    </select>
+                    <label for="size"> Taille: </label>
+                    <select id="size" name="size">
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                    <label for="quantity"> Quantité: </label>
+                    <select id="quantities" name="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="add-to">
+                    <button type="button" class="add-to-cart">Ajouter au panier</button>
+                    <button type="button" class="add-to-favorite">Ajouter aux favoris</button>
+                </div>
+            </div>
+            <div class="grid_more"> MORE PRODUCTS </div>
+        </div>
+    </body>
     <footer></footer>
 </html>
