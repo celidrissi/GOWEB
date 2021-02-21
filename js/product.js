@@ -12,8 +12,8 @@ class Product{
     }
 
     get titleCroped(){
-        // Titre raccourci
-        return this.title.substring(0, 10);
+        // Titre raccourci // '...' si le titre est raccouci
+        return title.substring(0, 30) + (title.length >= 30 && '...');
     }
     
     get priceTTC(){
