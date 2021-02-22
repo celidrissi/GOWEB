@@ -10,15 +10,18 @@
         <script src="https://kit.fontawesome.com/5d6074bd96.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="./js/main.js"></script>
+        <script src="./js/carrousel.js"></script>
         <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/carrousel.css">
         <title>Bienvenue sur Goweb !</title>
     </head>
     <body>
-        <div class="banner bg-red txt-white txt-center">
+        <div class="banner bg_red txt_white txt_center">
             Découvrez le nouveau site intenet de Goweb ! Entrez dans la famille ! 
-            <i class="fas fa-times" onclick="closeBanner()"></i>
+            <i class="banner_close fas fa-times" onclick="closeBanner()"></i>
         </div>
-        <div class="grid">
+        
+        <div class="grid_header">
             <div class="grid_header_logo"> 
                 <a id="goweb-logo" href="./index.html">
                     <span class="sr-only">Goweb</span>
@@ -55,18 +58,38 @@
                 </a>
             </div>
             <div class="grid_header_cart">
-                Panier (0)
+                <div class="cart_frame txt-center">
+                    Panier (<span class="cart_number">0</span>)
+                </div>
             </div>
-            <div class="grid_menu">
-                <ul>
-                    <li><a href="./">Home</a></li>
-                    <li><a href="./">HOMME <i class="fas fa-caret-down"></i></a></li>
-                    <li><a href="./">FEMME <i class="fas fa-caret-down"></i></a></li>
-                    <li><a href="./">MAISON</a></li>
-                    <li><a href="./">JARDIN</a></li>
-                    <li><a href="./">BLOG</a></li>
-                </ul>
+        </div>
+        <div class="menu">
+            <hr class="hr_line_top">
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./">HOMME <i class="fas fa-caret-down"></i></a></li>
+                <li><a href="./">FEMME <i class="fas fa-caret-down"></i></a></li>
+                <li><a href="./">MAISON</a></li>
+                <li><a href="./">JARDIN</a></li>
+                <li><a href="./">BLOG</a></li>
+            </ul>
+            <hr class="hr_line_bottom">
+        </div>
+        <div class="carrousel">
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            
+            <!-- Image text -->
+            <div class="caption-container">
+                <p id="caption"></p>
             </div>
+            
+            <!-- Thumbnail images -->
+            <div class="row">
+            </div>
+        </div>
+        <div class="grid">
             <div class="grid_preview_main"> PREVIEW MAIN </div>
             <div class="grid_preview_second"> PREVIEW SECOND </div>
             <div class="grid_description"> DESCRIPTION </div>
