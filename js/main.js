@@ -6,8 +6,6 @@ window.onload = function(){
     }
 }
 
-console.log(document.getElementsByClassName("menu")[0]);
-
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {stickyMenu()};
 
@@ -25,21 +23,24 @@ function stickyMenu() {
 }
 
 function closeBanner(){
-    console.log('yolo')
     document.querySelector('.banner').style.display = 'none';
     sessionStorage.setItem('banner', false);
 }
 
+function showProduct(id){
+    var product = document.createElement('div');
+    
+    document.querySelector('.grid_preview_main').append(product);
+}
+
 axios.get('https://fakestoreapi.com/products')
     .then(function (response) {
-        // Récupération des données
-        console.log(response.data)
+        // Récupération des données  
         response.data.forEach(element => {
-            var carrouselInner = '<div class="slides"><div class="numbertext">' + element.id + '/' + response.data.length + '</div><img src="'+ element.image +'" style="width:100%"></div>'
-            document.getElementsByClassName('carrousel')[0].innerHTML += carrouselInner;
-
-            var columnInner = '<div class="column"><img class="demo cursor" src="' + element.image + '" style="width:100%" onclick="currentSlide('+ element.id + ')" alt="Nature and sunrise"></div>'
-            document.querySelectorAll('.carrousel .row')[0].innerHTML += columnInner
+            var product = document.createElement('div');
+            product.className = 'carrousel-column';
+            product.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + element.image + '" style="width:100%" onclick="showProduct('+ element.id + ')" alt="Nature and sunrise">'
+            document.querySelector('.grid_preview_second').append(product);
         })
         
     })

@@ -2,18 +2,22 @@
     box-sizing: border-box;
   }
   
-  /* Position the image carrousel (needed to position the left and right arrows) */
-  .carrousel {
+  img {
+    vertical-align: middle;
+  }
+
+  /* Position the image container (needed to position the left and right arrows) */
+  .container {
     position: relative;
   }
   
   /* Hide the images by default */
-  .slides {
+  .carrousel-slides {
     display: none;
   }
   
   /* Add a pointer when hovering over the thumbnail images */
-  .cursor {
+  .carrousel-cursor {
     cursor: pointer;
   }
   
@@ -47,7 +51,7 @@
   }
   
   /* Number text (1/3 etc) */
-  .numbertext {
+  .carrousel-numbertext {
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;
@@ -55,32 +59,24 @@
     top: 0;
   }
   
-  /* Container for image text */
-  .caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
-  }
-  
-  .row:after {
+  .carrousel-row:after {
     content: "";
     display: table;
     clear: both;
   }
   
   /* Six columns side by side */
-  .column {
-    float: left;
-    width: 10%;
+  .carrousel-column {
+    display: table-cell;
+    width: 25%;
   }
   
   /* Add a transparency effect for thumnbail images */
-  .demo {
+  .carrousel-thumnbail {
     opacity: 0.6;
   }
   
   .active,
-  .demo:hover {
+  .carrousel-thumnbail:hover {
     opacity: 1;
   }
