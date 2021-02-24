@@ -10,9 +10,6 @@ window.onload = function(){
     } else {
         document.querySelector('.banner').style.display = 'block';
     }
-    document.querySelector('.banner').onclick = closeBanner();
-    document.querySelector('.banner').onclick = function() {alert('y')}
-
 }
 
 // Appel de la fonction stickyMenu au scroll
@@ -42,15 +39,16 @@ function closeBanner(){
 function setUpProducts(data) {
     // Pour chaque produit on ajoute dans le tableau de produit un object Product crée à partir des doonées de l'API
     data.forEach(obj => {
-        console.log(obj)
-        products.push(new Product(obj))
+        console.log(obj);
+        var temp = new Product(obj)
+        products.push(temp);
     });
 }
 
 // Création du carrousel des choix de produits
 function setUpCarrousel(){
     for(id_product in products){
-        var p = products[id_product]
+        var p = products[id_product];
         var el = document.createElement('div');
         el.className = 'carrousel-column';
         el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.image + '" style="width:100%" onclick="showProduct('+ p.id + ')" alt="Nature and sunrise">'
@@ -59,8 +57,8 @@ function setUpCarrousel(){
 }
 
 function setUp(data){
-    setUpProducts(data)
-    setUpCarrousel()
+    setUpProducts(data);
+    setUpCarrousel();
     showProduct(1); 
 }
 
@@ -75,7 +73,7 @@ function callApi(){
     axios.get('https://fakestoreapi.com/products')
     .then(function (response) {
         // Récupération et traitement des données
-        setUp(response.data)
+        setUp(response.data);
     })
     .catch(function (error) {
         // Log Erreur
@@ -85,10 +83,10 @@ function callApi(){
 
 // Test de connexion + setup de la variable online
 if (online = navigator.onLine){
-    callApi()
+    callApi();
 } else {
+    console.log('Mode Hors-Ligne');
     // Dans le cas où il n'y à pas de connexion internet on importe des données locales
-    import data from '../json/products.json/'
-    callApi(data)
+    callApi(require('../json/products.json/'));
 }
 
