@@ -63,10 +63,16 @@ function setUp(data){
 // Affichage du produit séléctionné
 function showProduct(id){
     console.log('ShowProduct('+id-1+')');
+
+    // Photo Principale
     var p = products[id-1];
     var el = document.createElement('div');
     el.innerHTML = '<img src="' + p.imageUrl + '" style="width:100%" alt="'+ p.title +'">'
     document.querySelector('.grid_preview_main').innerHTML = el.innerHTML;
+
+    // Description
+    var el = document.createElement('div');
+    el.innerHTML = '<'
 }
 
 // Api Axios qui récupére les données
