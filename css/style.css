@@ -38,6 +38,8 @@ html, body {
 .menu ul {
     list-style-type: none;
     overflow: hidden;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .menu ul li {
     float: left;
@@ -61,8 +63,8 @@ html, body {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-gap: 10px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 10px;
 }
 .grid {
@@ -70,8 +72,8 @@ html, body {
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 10px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     min-height: 0;
     min-width: 0;
 }
@@ -95,25 +97,25 @@ html, body {
 .grid_preview_main {
     grid-column: 1/8;
     grid-row: 1/6;
-    height: 100%;
+    max-width: 100%
 }
 .grid_preview_second {
     grid-column: 1/8;
     grid-row: 6/8;
-    height: 100%;
+    max-width: 100%
 }
 .grid_description {
     grid-column: 8/13;
     grid-row: 1/4;
-    height: 100%;
+    max-width: 100%
 }
 .grid_selection {
     grid-column: 8/13;
     grid-row: 4/6;
-    height: 100%;
+    max-width: 100%
 }
 .grid_more {
     grid-column: 1/13;
     grid-row: 08/18;
-    height: 100%;
+    max-width: 100%
 }
