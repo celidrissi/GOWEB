@@ -1,50 +1,94 @@
+import Product from './product'; // Import de la class Product
+var products = []; // Tableau des produits
+var online; // Variable de connexion // Permet de bloquer des actions en mode 'Hors Ligne'
+
+// Fonction lancé lorsque le chargement de la page est terminé
 window.onload = function(){
+    // En fonction des données en sessionStroage, on affiche ou non la banniere
     if (sessionStorage.getItem('banner') === 'false') {
         document.querySelector('.banner').style.display = 'none';
     } else {
         document.querySelector('.banner').style.display = 'block';
     }
+    document.querySelector('.banner').onclick = closeBanner();
+    document.querySelector('.banner').onclick = function() {alert('y')}
+
 }
 
-// When the user scrolls the page, execute myFunction
+// Appel de la fonction stickyMenu au scroll
 window.onscroll = function() {stickyMenu()};
 
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function stickyMenu() {
-    // Get the header
-    var header = document.getElementsByClassName("menu")[0];
-    // Get the offset position of the navbar
-    var sticky = header.offsetTop;
+    // Foncton qui ajoute la classe homemade-sticky
+    var menu = document.getElementsByClassName("menu")[0];
+    var sticky = menu.offsetTop;
+    // On active la classe seulement quand le scroll arrive à la possition (Y) du menu
     if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
+        menu.classList.add("homemade-sticky");
     } else {
-        header.classList.remove("sticky");
+        menu.classList.remove("homemade-sticky");
     }
 }
 
+// Fonction de fermeture de la banniere + Sauvegarde de l'etat en sessionStorage
 function closeBanner(){
+    // Configuration du display à none quand on ferme la banniere 
     document.querySelector('.banner').style.display = 'none';
     sessionStorage.setItem('banner', false);
 }
 
-function showProduct(id){
-    var product = document.createElement('div');
-    
-    document.querySelector('.grid_preview_main').append(product);
+// Création du tableau de produits 
+function setUpProducts(data) {
+    // Pour chaque produit on ajoute dans le tableau de produit un object Product crée à partir des doonées de l'API
+    data.forEach(obj => {
+        console.log(obj)
+        products.push(new Product(obj))
+    });
 }
 
-axios.get('https://fakestoreapi.com/products')
+// Création du carrousel des choix de produits
+function setUpCarrousel(){
+    for(id_product in products){
+        var p = products[id_product]
+        var el = document.createElement('div');
+        el.className = 'carrousel-column';
+        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.image + '" style="width:100%" onclick="showProduct('+ p.id + ')" alt="Nature and sunrise">'
+        document.querySelector('.grid_preview_second').append(el);
+    }
+}
+
+function setUp(data){
+    setUpProducts(data)
+    setUpCarrousel()
+    showProduct(1); 
+}
+
+// Affichage du produit séléctionné
+function showProduct(id){
+    var p = document.createElement('div');
+    document.querySelector('.grid_preview_main').append(p);
+}
+
+// Api Axios qui récupére les données
+function callApi(){
+    axios.get('https://fakestoreapi.com/products')
     .then(function (response) {
-        // Récupération des données  
-        response.data.forEach(element => {
-            var product = document.createElement('div');
-            product.className = 'carrousel-column';
-            product.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + element.image + '" style="width:100%" onclick="showProduct('+ element.id + ')" alt="Nature and sunrise">'
-            document.querySelector('.grid_preview_second').append(product);
-        })
-        
+        // Récupération et traitement des données
+        setUp(response.data)
     })
     .catch(function (error) {
         // Log Erreur
         console.log(error);
     });
+}
+
+// Test de connexion + setup de la variable online
+if (online = navigator.onLine){
+    callApi()
+} else {
+    // Dans le cas où il n'y à pas de connexion internet on importe des données locales
+    import data from '../json/products.json/'
+    callApi(data)
+}
+

@@ -49,12 +49,12 @@ html, body {
     padding: 14px 16px;
     text-decoration: none;
 }
-.sticky {
+.homemade-sticky {
     position: fixed;
     top: 0;
     width: 100%
 }
-.sticky + .content {
+.homemade-sticky + .content {
     padding-top: 102px;
 }
 .grid_header {
