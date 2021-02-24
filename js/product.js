@@ -1,4 +1,4 @@
-export default class Product{
+class Product{
     // Constructeur à partir des données JSON de l'api
     constructor(json){
         this.id = json.id

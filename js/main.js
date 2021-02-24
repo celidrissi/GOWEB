@@ -1,4 +1,3 @@
-import Product from './product'; // Import de la class Product
 var products = []; // Tableau des produits
 var online; // Variable de connexion // Permet de bloquer des actions en mode 'Hors Ligne'
 
@@ -39,10 +38,9 @@ function closeBanner(){
 function setUpProducts(data) {
     // Pour chaque produit on ajoute dans le tableau de produit un object Product crée à partir des doonées de l'API
     data.forEach(obj => {
-        console.log(obj);
-        var temp = new Product(obj)
-        products.push(temp);
+        products.push(new Product(obj));
     });
+    return true
 }
 
 // Création du carrousel des choix de produits
@@ -50,8 +48,8 @@ function setUpCarrousel(){
     for(id_product in products){
         var p = products[id_product];
         var el = document.createElement('div');
-        el.className = 'carrousel-column';
-        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.image + '" style="width:100%" onclick="showProduct('+ p.id + ')" alt="Nature and sunrise">'
+        el.className = (id_product >= 4 && 'carrousel-hide') || 'carrousel-column'; // On n'affiche que les 4 premiers éléments
+        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.imageUrl + '" style="width:100%" onclick="showProduct('+ p.id + ')" alt="'+ p.title +'">'
         document.querySelector('.grid_preview_second').append(el);
     }
 }
@@ -64,8 +62,11 @@ function setUp(data){
 
 // Affichage du produit séléctionné
 function showProduct(id){
-    var p = document.createElement('div');
-    document.querySelector('.grid_preview_main').append(p);
+    console.log('ShowProduct('+id-1+')');
+    var p = products[id-1];
+    var el = document.createElement('div');
+    el.innerHTML = '<img src="' + p.imageUrl + '" style="width:100%" alt="'+ p.title +'">'
+    document.querySelector('.grid_preview_main').innerHTML = el.innerHTML;
 }
 
 // Api Axios qui récupére les données
@@ -87,6 +88,7 @@ if (online = navigator.onLine){
 } else {
     console.log('Mode Hors-Ligne');
     // Dans le cas où il n'y à pas de connexion internet on importe des données locales
-    callApi(require('../json/products.json/'));
+    var offline_data = require('../json/products.json');
+    callApi(require(offline_data));
 }
 

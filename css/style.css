@@ -72,6 +72,8 @@ html, body {
     grid-gap: 10px;
     padding-left: 5%;
     padding-right: 5%;
+    min-height: 0;
+    min-width: 0;
 }
 .grid > div {
     border: 2px solid rgb(233,171,88);
@@ -93,20 +95,25 @@ html, body {
 .grid_preview_main {
     grid-column: 1/8;
     grid-row: 1/6;
+    height: 100%;
 }
 .grid_preview_second {
     grid-column: 1/8;
     grid-row: 6/8;
+    height: 100%;
 }
 .grid_description {
     grid-column: 8/13;
     grid-row: 1/4;
+    height: 100%;
 }
 .grid_selection {
     grid-column: 8/13;
     grid-row: 4/6;
+    height: 100%;
 }
 .grid_more {
     grid-column: 1/13;
     grid-row: 08/18;
+    height: 100%;
 }

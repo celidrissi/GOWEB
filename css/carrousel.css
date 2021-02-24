@@ -65,9 +65,13 @@
     clear: both;
   }
   
+.carrousel-hide{
+    display: none;
+}
+
   /* Six columns side by side */
   .carrousel-column {
-    display: table-cell;
+    display: inline-block;
     width: 25%;
   }
   
