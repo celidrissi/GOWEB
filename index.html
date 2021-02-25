@@ -62,24 +62,25 @@
                     Panier (<span class="cart_number">0</span>)
                 </div>
             </div>
-        </div>
-        <div class="menu">
-            <hr class="hr_line_top">
-            <ul>
-                <li><a href="./">Home</a></li>
-                <li><a href="./">HOMME <i class="fas fa-caret-down"></i></a></li>
-                <li><a href="./">FEMME <i class="fas fa-caret-down"></i></a></li>
-                <li><a href="./">MAISON</a></li>
-                <li><a href="./">JARDIN</a></li>
-                <li><a href="./">BLOG</a></li>
-            </ul>
-            <hr class="hr_line_bottom">
+            <div class="grid_header_menu">
+                <hr class="hr_line_top">
+                <ul>
+                    <li><a href="./">Home</a></li>
+                    <li><a href="./">HOMME <i class="fas fa-caret-down"></i></a></li>
+                    <li><a href="./">FEMME <i class="fas fa-caret-down"></i></a></li>
+                    <li><a href="./">MAISON</a></li>
+                    <li><a href="./">JARDIN</a></li>
+                    <li><a href="./">BLOG</a></li>
+                </ul>
+                <hr class="hr_line_bottom">
+            </div>
         </div>
         <div class="grid">
-            <div class="grid_preview_main"> PREVIEW MAIN </div>
+            <div class="grid_preview_main"></div>
             <div class="grid_preview_second"></div>
             <div class="grid_description">
-                <h1 id="grid_description_title">Super Manteau pour supporter le froid des Hauts-de-France</h1><br/>
+                < Retour
+                <h1 id="grid_description_title">Super manteau pour supporter le froid des Hauts-de-France</h1><br/>
                 <b id="grid_description_price">499.00€</b><br/><br/>
                 <b id="grid_description_disponibility">Disponible en 4 couleurs</b><br/>
                 <b id="grid_description_disponibility">Référence : #4657</b><br/>
@@ -104,37 +105,46 @@
                     </li>
                 </ul>
             </div>
-            <div class="grid_selection"> SELECTION
-                <div class="selectors">
-                    <label for="color"> Couleur: </label>
-                    <select id="colors" name="color">
-                        <option value="colorA">colorA</option>
-                        <option value="colorB">colorB</option>
-                        <option value="colorC">colorC</option>
-                        <option value="colorD">colorD</option>
-                        <option value="colorE">colorE</option>
-                    </select>
-                    <label for="size"> Taille: </label>
-                    <select id="size" name="size">
-                        <option value="xs">XS</option>
-                        <option value="s">S</option>
-                        <option value="m">M</option>
-                        <option value="l">L</option>
-                        <option value="xl">XL</option>
-                        <option value="xxl">XXL</option>
-                    </select>
-                    <label for="quantity"> Quantité: </label>
-                    <select id="quantities" name="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+            <div class="grid_selectors">
+                <div class="grid_selectors_choices">
+                    <div class="grid_selectors_choices_color">
+                        <b class="uppercase"><label for="color"> Couleur </label></b>
+                        <select id="colors" name="color">
+                            <option>Choix couleur</option>
+                            <option value="1">Beige</option>
+                            <option value="2">Bordeaux</option>
+                            <option value="3">Bleu Marine</option>
+                            <option value="4">Noir</option>
+                        </select>
+                    </div>
+                    <div class="grid_selectors_choices_size">
+                        <b class="uppercase"><label for="size"> Taille </label></b>
+                        <select id="size" name="size">
+                            <option>Taille</option>
+                            <option value="xs">XS</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option value="xl">XL</option>
+                            <option value="xxl">XXL</option>
+                        </select>
+                    </div>
+                    <div class="grid_selectors_choices_quantity">
+                        <b class="uppercase"><label for="quantity"> Qté </label></b>
+                        <select id="quantities" name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    
                 </div>
-                <div class="add-to">
-                    <button type="button" class="add-to-cart">Ajouter au panier</button>
-                    <button type="button" class="add-to-favorite">Ajouter aux favoris</button>
+                <br/>
+                <div class="grid_add_to">
+                    <button type="button" class="grid_add_to_cart">Ajouter au panier</button>
+                    <button type="button" class="grid_add_to_favorite">Ajouter aux favoris</button>
                 </div>
             </div>
             <div class="grid_more"> MORE PRODUCTS </div>
