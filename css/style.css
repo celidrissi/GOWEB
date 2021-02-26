@@ -24,12 +24,18 @@ html, body {
     text-align: center;
 }
 .hr_line_top{
+    position: absolute;
     border: 1px solid grey;
     margin: 0;
+    left: 0;
+    width: 100%;
 }
 .hr_line_bottom{
+    position: absolute;
     border: 1px solid grey;
     margin: 0;
+    left: 0;
+    width: 100%;
 }
 .cart_frame {
     padding: 14px;
@@ -49,7 +55,7 @@ html, body {
     text-transform: uppercase;
 }
 select{
-    width: 80%;
+    width: 90%;
     padding: 5px 0px 5px 5px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -85,12 +91,13 @@ select{
     align-items: center;
 }
 .grid_header_cart{
-    grid-column: 10/13;
+    grid-column: 11/13;
     grid-row: 1; 
     text-align: center;
+        text-transform: uppercase;
 }
 .grid_header_menu {
-    grid-column: 1/13;
+    grid-column: 1/12;
     grid-row: 2;
 }
 .grid_header_menu ul {
@@ -108,6 +115,20 @@ select{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+.grid_header_extra{
+    grid-column: 12/13;
+    grid-row: 2;
+    margin: 1em;
+    display: flex;
+}
+.grid_header_extra_separation{
+    border-left-color: #453D3B;
+    border-left-style: dotted;
+    border-left-width: 1px;
+    height: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .grid_preview_main {
     grid-column: 1/9;
@@ -146,6 +167,9 @@ select{
 .grid_selectors_choices_quantity{
     grid-column: auto;
 }
+.quantities{
+    width: 100%;
+}
 b ~ select{
     margin-top: 10px;
 }
@@ -153,10 +177,8 @@ b ~ select{
    display: grid;
    grid-template-columns: repeat(2,1fr);
 }
-.grid_add_to_cart{
-    grid-column: 1/2;
-}
 .grid_add_to_cart {
+    grid-column: 1/2;
     background-color: #453D3B;
     border-width: 1px ;
     border-color: #453D3B;
@@ -167,12 +189,15 @@ b ~ select{
     display: inline-block;
     font-size: 16px;
     margin-right: 10px;
+    cursor: not-allowed;
+}
+.grid_add_to_cart:hover {
+    transition: 0.3s;
+    background-color: #6b6b6b;
 }
 .grid_add_to_favorite{
     grid-column: auto;
-}
-.grid_add_to_favorite {
-    background-color: #fff;
+    background-color: white;
     border-width: 1px ;
     border-color: #453D3B;
     color: #453D3B;
@@ -182,6 +207,10 @@ b ~ select{
     display: inline-block;
     font-size: 16px;
     margin-left: 10px;
+}
+.grid_add_to_favorite:hover {
+    transition: 0.3s;
+    background-color: #bdbdbd;
 }
 .grid_more {
     grid-column: 1/13;

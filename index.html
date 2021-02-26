@@ -74,6 +74,11 @@
                 </ul>
                 <hr class="hr_line_bottom">
             </div>
+            <div class="grid_header_extra">
+                <i class="far fa-heart"></i>
+                <div class="grid_header_extra_separation"></div>
+                <i class="fas fa-search"></i>
+            </div>
         </div>
         <div class="grid">
             <div class="grid_preview_main"></div>
@@ -109,8 +114,8 @@
                 <div class="grid_selectors_choices">
                     <div class="grid_selectors_choices_color">
                         <b class="uppercase"><label for="color"> Couleur </label></b>
-                        <select id="colors" name="color">
-                            <option>Choix couleur</option>
+                        <select class="colors" name="color" onchange="selectChange()">
+                            <option >Choix couleur</option>
                             <option value="1">Beige</option>
                             <option value="2">Bordeaux</option>
                             <option value="3">Bleu Marine</option>
@@ -119,7 +124,7 @@
                     </div>
                     <div class="grid_selectors_choices_size">
                         <b class="uppercase"><label for="size"> Taille </label></b>
-                        <select id="size" name="size">
+                        <select class="size" name="size" onchange="selectChange()">
                             <option>Taille</option>
                             <option value="xs">XS</option>
                             <option value="s">S</option>
@@ -131,7 +136,7 @@
                     </div>
                     <div class="grid_selectors_choices_quantity">
                         <b class="uppercase"><label for="quantity"> Qté </label></b>
-                        <select id="quantities" name="quantity">
+                        <select class="quantities" name="quantity" onchange="selectChange()">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -143,7 +148,7 @@
                 </div>
                 <br/>
                 <div class="grid_add_to">
-                    <button type="button" class="grid_add_to_cart">Ajouter au panier</button>
+                    <button type="button" class="grid_add_to_cart" onclick="addToCart()" disabled>Ajouter au panier</button>
                     <button type="button" class="grid_add_to_favorite">Ajouter aux favoris</button>
                 </div>
             </div>

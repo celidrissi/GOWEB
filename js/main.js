@@ -45,6 +45,17 @@ function closeBanner(){
     sessionStorage.setItem('banner', false);
 }
 
+// Fonction lancé lorsque un choix est fait (sur les selects)
+function selectChange(){
+    console.log('hey');
+    var colorValue = document.querySelector('.colors').selectedIndex;
+    var sizeValue = document.querySelector('.size').selectedIndex
+    if (colorValue && sizeValue){
+        document.querySelector('.grid_add_to_cart').disabled = false
+        document.querySelector('.grid_add_to_cart').style.cursor = 'default';
+    }
+}
+
 // Création du tableau de produits 
 function setUpProducts(data) {
     // Pour chaque produit on ajoute dans le tableau de produit un object Product crée à partir des doonées de l'API
@@ -87,6 +98,12 @@ function setUpMain(){
         el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" style="width:' + w + 'px" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
         document.querySelector('.grid_preview_second').innerHTML += el.innerHTML;
     }
+}
+
+function addToCart(value){
+    var oldValue = parseInt(document.querySelector('.cart_number').innerText)
+    var quantity = parseInt(document.querySelector('.quantities').value)
+    document.querySelector('.cart_number').innerText = oldValue + quantity;
 }
 
 function setUp(data){
