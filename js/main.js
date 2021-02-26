@@ -65,14 +65,48 @@ function setUpProducts(data) {
     return true
 }
 
-// Création du carrousel des choix de produits
-function setUpCarrousel(){
+// Création du tableau des produits suggérés
+function setUpMoreProducts(){
     for(id_product in products){
         var p = products[id_product];
+
         var el = document.createElement('div');
-        el.className = (id_product >= 6 && 'carrousel-hide') || 'carrousel-column'; // On n'affiche que les 4 premiers éléments
-        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.imageUrl + '" onclick="showProduct('+ p.id + ')" alt="'+ p.title +'">'
-        document.querySelector('.grid_preview_second').append(el);
+        el.style="grid-column: 1;grid-row: 1;";
+        el.className="grid_more_header_content_product";
+
+        var elPrice = document.createElement('div');
+        elPrice.className="grid_more_header_content_product_price";
+
+        var elImage = document.createElement('img');
+
+        var elText = document.createElement('div');
+
+        var elButton = document.createElement('button');
+
+        <div style="grid-column: 1;grid-row: 1;" class="">
+            ---
+            <div class="grid_more_header_content_product_price">
+                ---
+                <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
+                ---
+                <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
+                ---
+            </div>
+            ---
+            <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
+            ---
+            <div class="grid_more_header_content_product_text">
+                Fjallraven - Foldsack No. 1 Backpack
+            </div>
+            ---
+            <button class="grid_more_header_content_product_add_to_cart">
+                Ajouter au panier
+            </button>
+            ---
+        </div>
+        //el.className = (id_product >= 6 && 'carrousel-hide') || 'carrousel-column'; // On n'affiche que les 4 premiers éléments
+        //el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.imageUrl + '" onclick="showProduct('+ p.id + ')" alt="'+ p.title +'">'
+        //document.querySelector('.grid_preview_second').append(el);
     }
 }
 
@@ -84,18 +118,19 @@ function showProduct(id){
 
 // SetUp des zonnes d'affichage
 function setUpMain(){
+    var el = document.createElement('div')
+    el.innerHTML = '<img class="grid_preview_main_image" style="width: 100%;" src="./assets/img-4.jpg" onclick="showProduct(1)" alt="img-4.jpg">'
+    document.querySelector('.grid_preview_main').innerHTML = el.innerHTML;
+}
+
+function setUpCarrousel(){
     for(i=3; i>=0; i--){
         var name = assetsMainNames[i]
-        var el = document.createElement('div')
-        if (name == 'img-4.jpg'){
-            // Affichage de la premiere photo dans zone principal
-            el.innerHTML = '<img style="max-width:100%; max-height:100%" src="./assets/' + name + '" onclick="showProduct('+ i + ')"' + name + '">'
-            document.querySelector('.grid_preview_main').innerHTML = el.innerHTML;
-        }
         // Affichage des photos dans la zone secondaire
+        var el = document.createElement('div')
         el.className = 'carrousel-thumnbail carrousel-cursor';
-        var w = document.querySelector('.grid_preview_second').clientWidth/4 - 10;
-        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" style="width:' + w + 'px" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
+        console.log(document.querySelector('.grid_preview_main_image').offsetWidth)
+        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" style="width:100%;height:100%" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
         document.querySelector('.grid_preview_second').innerHTML += el.innerHTML;
     }
 }
@@ -107,9 +142,10 @@ function addToCart(value){
 }
 
 function setUp(data){
-    setUpMain()
-    //setUpProducts(data);
-    //setUpCarrousel();
+    setUpMain();
+    setUpCarrousel();
+    setUpProducts(data);
+    setUpMoreProducts();
     //showProduct(1); 
 }
 
