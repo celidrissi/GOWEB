@@ -12,10 +12,17 @@
         <script src="./js/main.js"></script>
         <script src="./js/product.js"></script>
         <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/carrousel.css">
         <title>Bienvenue sur Goweb !</title>
     </head>
     <body>
+        <!--
+        <div>
+            <div class="alert_title"></div>
+            <div class="alert_text"></div>
+            <button class="alert_ok"> OK</button>
+            <button class="alert_cancel">Annuler</button>
+        </div>
+        -->
         <div class="banner bg_red txt_white txt_center">
             Découvrez le nouveau site intenet de Goweb ! Entrez dans la famille ! 
             <i class="banner_close fas fa-times" onclick="closeBanner()"></i>
@@ -157,120 +164,17 @@
                         Ces produits pourraient compléter votre look....
                     </div>
                     <div class="grid_more_header_sort">
-                        <div class="grid_more_header_sort_up">
+                        <div class="grid_more_header_sort_up" onclick="sort('down')">
                             Prix croissant
                         </div>
                         <div class="grid_more_header_sort_separation"></div>
-                        <div class="grid_more_header_sort_down">
+                        <div class="grid_more_header_sort_down" onclick="sort('up')">
                             Prix croissant
                         </div>
                     </div>
                 </div>
                 <div class="grid_more_header_content">
-                    <div style="grid-column: 1;grid-row: 1;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 2;grid-row: 1;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 3;grid-row: 1;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 4;grid-row: 1;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 1;grid-row: 2;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 2;grid-row: 2;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 3;grid-row: 2;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
-                    <div style="grid-column: 4;grid-row: 2;" class="grid_more_header_content_product">
-                        <div class="grid_more_header_content_product_price">
-                            <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                            <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                        </div>
-                        <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-                        <div class="grid_more_header_content_product_text">
-                            Fjallraven - Foldsack No. 1 Backpack
-                        </div>
-                        <button class="grid_more_header_content_product_add_to_cart">
-                            Ajouter au panier
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

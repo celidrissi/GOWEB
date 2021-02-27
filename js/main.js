@@ -1,13 +1,9 @@
 var products = []; // Tableau des produits
 var online; // Variable de connexion // Permet de bloquer des actions en mode 'Hors Ligne'
-var preview_height; // Variable contenant la largeur de la preview // #PasOuf #Triche
-var preview_width; // Variable contenant la largeur de la preview // #PasOuf #Triche
 var assetsMainNames = ['img-1.jpg','img-2.jpg','img-3.jpg','img-4.jpg']; // Nom des assets pour l'affichage principal
 
 // Fonction lancé lorsque le chargement de la page est terminé
 window.onload = function(){
-    preview_height = document.querySelector('.grid_preview_main').clientHeight;
-    preview_width = document.querySelector('.grid_preview_main').clientWidth;
     // En fonction des données en sessionStroage, on affiche ou non la banniere
     if (sessionStorage.getItem('banner') === 'false') {
         document.querySelector('.banner').style.display = 'none';
@@ -18,7 +14,7 @@ window.onload = function(){
 
 // Fonction lancé au redimensiionnement de la page
 window.onresize = function(){
-    alert("Il s'emblerait que votre page est été redimensionné, rechargement ..");
+    alert("Il s'emblerait que votre page est été redimensionné, rechargement ...");
     location.reload();
 }
 
@@ -47,7 +43,6 @@ function closeBanner(){
 
 // Fonction lancé lorsque un choix est fait (sur les selects)
 function selectChange(){
-    console.log('hey');
     var colorValue = document.querySelector('.colors').selectedIndex;
     var sizeValue = document.querySelector('.size').selectedIndex
     if (colorValue && sizeValue){
@@ -62,51 +57,53 @@ function setUpProducts(data) {
     data.forEach(obj => {
         products.push(new Product(obj));
     });
-    return true
+    console.log(products)
 }
 
 // Création du tableau des produits suggérés
 function setUpMoreProducts(){
     for(id_product in products){
+        // Récupération du produit
         var p = products[id_product];
-
+        // Calcul du n° de colonne et de ligne
+        var col = p.id % 4;
+        var row = Math.ceil(p.id / 4); // Arrondi sup
+        //  Création de la div principale + style + class
         var el = document.createElement('div');
-        el.style="grid-column: 1;grid-row: 1;";
-        el.className="grid_more_header_content_product";
-
-        var elPrice = document.createElement('div');
-        elPrice.className="grid_more_header_content_product_price";
-
-        var elImage = document.createElement('img');
-
+        el.style.cssText = 'grid-column: ' + col + ';grid-row: ' + row +';';
+        el.className = 'grid_more_header_content_product';
+            // Création d'un des éléments de la div + Ajout au parent // Les prix
+            var elPrice = document.createElement('div');
+            elPrice.className = 'grid_more_header_content_product_price';
+                // Création du sous-element + Ajout au parent // Prix TTC
+                var elPriceTTC = document.createElement('div')
+                elPriceTTC.className = 'grid_more_header_content_product_price_ttc';
+                elPriceTTC.innerHTML = p.getPriceTTC() + '€ TTC';
+                elPrice.appendChild(elPriceTTC);
+                // Création du sous-element + Ajout au parent // Prix HT
+                var elPriceHT = document.createElement('div')
+                elPriceHT.className = 'grid_more_header_content_product_price_ht';
+                elPriceHT.innerHTML = p.getPriceHT() + '€ HT';
+                elPrice.appendChild(elPriceHT);
+            el.appendChild(elPrice)
+            // Création du sous-element + Ajout au parent // Image
+            var elImage = document.createElement('img');
+            elImage.className = 'grid_more_header_content_product_image';
+            elImage.src = p.getImageUrl();
+            el.appendChild(elImage);
+        // Création du sous-element + Ajout au parent // Texte
         var elText = document.createElement('div');
-
+        elText.className = 'grid_more_header_content_product_text';
+        elText.innerHTML = p.getTitleCroped();
+        el.appendChild(elText)
+        // Création du sous-element + Ajout au parent // Button
         var elButton = document.createElement('button');
-
-        <div style="grid-column: 1;grid-row: 1;" class="">
-            ---
-            <div class="grid_more_header_content_product_price">
-                ---
-                <div class="grid_more_header_content_product_price_ttc">131.94€ TTC</div>
-                ---
-                <div class="grid_more_header_content_product_price_ht">109.95€ HT</div>
-                ---
-            </div>
-            ---
-            <img src="./assets/more-product-4.jpg" class="grid_more_header_content_product_image">
-            ---
-            <div class="grid_more_header_content_product_text">
-                Fjallraven - Foldsack No. 1 Backpack
-            </div>
-            ---
-            <button class="grid_more_header_content_product_add_to_cart">
-                Ajouter au panier
-            </button>
-            ---
-        </div>
-        //el.className = (id_product >= 6 && 'carrousel-hide') || 'carrousel-column'; // On n'affiche que les 4 premiers éléments
-        //el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" src="' + p.imageUrl + '" onclick="showProduct('+ p.id + ')" alt="'+ p.title +'">'
-        //document.querySelector('.grid_preview_second').append(el);
+        elButton.className = 'grid_more_header_content_product_add_to_cart';
+        elButton.innerHTML = 'Ajouter au panier';
+        elButton.setAttribute("onclick", "addToCart(1)");
+        el.appendChild(elButton);
+        // Ajout de la div crée dans le DOM
+        document.querySelector('.grid_more_header_content').appendChild(el);
     }
 }
 
@@ -129,18 +126,25 @@ function setUpCarrousel(){
         // Affichage des photos dans la zone secondaire
         var el = document.createElement('div')
         el.className = 'carrousel-thumnbail carrousel-cursor';
-        console.log(document.querySelector('.grid_preview_main_image').offsetWidth)
         el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" style="width:100%;height:100%" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
         document.querySelector('.grid_preview_second').innerHTML += el.innerHTML;
     }
 }
 
+// Fonction d'ajout au panier // oldValue + quantity
 function addToCart(value){
-    var oldValue = parseInt(document.querySelector('.cart_number').innerText)
-    var quantity = parseInt(document.querySelector('.quantities').value)
+    var quantity;
+    var oldValue = parseInt(document.querySelector('.cart_number').innerText);
+    if(value !== undefined){
+        quantity = 1; // Ajout depuis More Product // +1
+    } else {
+        quantity = parseInt(document.querySelector('.quantities').value); // Ajout depuis la selection principale // +Quantity
+    }
     document.querySelector('.cart_number').innerText = oldValue + quantity;
+    // Idée pour plus tard : Ajouter un affichage des articles dans le panier
 }
 
+// Fonction de setup  // Lancé  au chargement de la page
 function setUp(data){
     setUpMain();
     setUpCarrousel();

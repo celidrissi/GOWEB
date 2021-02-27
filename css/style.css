@@ -153,14 +153,12 @@ select{
     grid-template-columns: repeat(4,1fr);
     grid-gap: 1rem;
 }
-/* Add a pointer when hovering over the thumbnail images */
 .carrousel-cursor {
-cursor: pointer;
+    cursor: pointer;
 }
 
-/* Add a transparency effect for thumnbail images */
 .carrousel-thumnbail {
-opacity: 0.6;
+    opacity: 0.6;
 }
 .grid_description {
     grid-column: 9/13;
@@ -332,6 +330,7 @@ b ~ select{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    margin-top: auto;
     padding-top: 20px;
 }
 .grid_more_header_content_product_text{

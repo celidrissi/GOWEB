@@ -7,32 +7,32 @@ class Product{
         this.imageUrl = json.image; // Rénommé en imageUrl pour plus de clarté
     }
 
-    id(){
+    getId(){
         // Id
         return this.id;
     }
 
-    title(){
+    getTitle(){
         // Titre
         return this.title;
     }
 
-    titleCroped(){
+    getTitleCroped(){
         // Titre raccourci // '...' si le titre est raccouci
-        return title.substring(0, 30) + (title.length >= 30 && '...');
+        return this.title.substring(0, 30) + (this.title.length >= 30 && '...');
     }
     
-    priceTTC(){
+    getPriceTTC(){
         // Prix TTC // TVA (20%)
-        return this.price * 1.2;
+        return (this.price * 1.2).toFixed(2);
     }
 
-    priceHT(){
+    getPriceHT(){
         // Prix HT
         return this.price;
     }
 
-    imageUrl(){
+    getImageUrl(){
         // Description
         return this.imageUrl;
     }
