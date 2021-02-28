@@ -102,11 +102,6 @@ function setUpMoreProducts(){
     }
 }
 
-// Affichage du produit séléctionné
-function showProduct(id){
-    var name = assetsMainNames[id];
-    document.querySelector('.grid_preview_main').firstChild.src = './assets/' + name;
-}
 
 // SetUp des zonnes d'affichage
 function setUpMain(){
@@ -126,6 +121,7 @@ function setUpCarrousel(){
     }
 }
 
+// fonction de tri d'un objet en fonction d'une key
 function compareValues(key, order = 'asc') {
     return function innerSort(a, b) {
       const varA = (typeof a[key] === 'string')? a[key].toUpperCase() : a[key];
@@ -141,9 +137,14 @@ function compareValues(key, order = 'asc') {
     };
   }
 
+// Fonction de tri des porudits complémentaires
 function sort(type){
+    var sort_up_decoration = (type === 'asc') && 'underline';
+    var sort_down_decoration = (type === 'desc') && 'underline';
+    document.querySelector('.grid_more_header_sort_up').style.textDecoration = sort_up_decoration || 'none';
+    document.querySelector('.grid_more_header_sort_down').style.textDecoration = sort_down_decoration || 'none';
     products.sort(compareValues('price',type));
-    setUpMoreProducts();
+    setUpMoreProducts(); // On recrée l'affichage avec les produits triés
 }
 
 // Fonction d'ajout au panier // oldValue + quantity
@@ -165,10 +166,7 @@ function setUp(data){
     setUpCarrousel();
     setUpProducts(data);
     setUpMoreProducts();
-    //showProduct(1); 
 }
-
-
 
 // Api Axios qui récupére les données
 function callApi(){
