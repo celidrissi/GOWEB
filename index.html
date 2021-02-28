@@ -12,6 +12,8 @@
         <script src="./js/main.js"></script>
         <script src="./js/product.js"></script>
         <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/style_s.css">
+        <link rel="stylesheet" href="./css/style_l.css">
         <title>Bienvenue sur Goweb !</title>
     </head>
     <body>
@@ -64,7 +66,7 @@
                 </a>
             </div>
             <div class="grid_header_cart">
-                <div class="cart_frame txt-center">
+                <div class="grid_header_cart_frame txt-center">
                     Panier (<span class="cart_number">0</span>)
                 </div>
             </div>
@@ -89,73 +91,79 @@
         <div class="grid">
             <div class="grid_preview_main"></div>
             <div class="grid_preview_second"></div>
-            <div class="grid_description">
-                < Retour
-                <h1 class="grid_description_title">Super manteau pour supporter le froid des Hauts-de-France</h1><br/>
-                <b class="grid_description_price">499.00€</b><br/><br/>
-                <b class="grid_description_disponibility">Disponibilité : En stock</b><br/>
-                <b class="grid_description_disponibility">Référence : #4657</b><br/>
-                <b id="grid_description_disponibility">Tags : Fashion victim, Classe, Business</b>
-                <br/><br/><br/>
-                <div class="grid_description_text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmotempor incididunt ut labore et dolore magna aliqua.
+            <div class="grid_left_pane">
+                <div class="grid_description">
+                    <div class="grid_description_return">< Retour</div>
+                    <h1 class="grid_description_title">Super manteau pour supporter le froid des Hauts-de-France</h1>
+                    <br/>
+                    <b class="grid_description_price">499.00€</b>
+                    <br/><br/>
+                    <b class="grid_description_disponibility">Disponibilité : En stock</b>
+                    <br/>
+                    <b class="grid_description_disponibility">Référence : #4657</b>
+                    <br/>
+                    <b id="grid_description_disponibility">Tags : Fashion victim, Classe, Business</b>
+                    <br/><br/>
+                    <div class="grid_description_text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmotempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <br/>
+                    <ul class="grid_description_text">
+                        <li class="grid_description_color_disponibility">
+                            Disponibilité en 4 couleurs
+                        </li>
+                        <li class="grid_description_fit">
+                            Regular Fit
+                        </li>
+                        <li class="grid_description_matter">
+                            100% Coton
+                        </li>
+                        <li class="grid_description_delivery">
+                            Livraison gratuite
+                        </li>
+                    </ul>
                 </div>
-                <br/>
-                <ul class="grid_description_text">
-                    <li class="grid_description_color_disponibility">
-                        Disponibilité en 4 couleurs
-                    </li>
-                    <li class="grid_description_fit">
-                        Regular Fit
-                    </li>
-                    <li class="grid_description_matter">
-                        100% Coton
-                    </li>
-                    <li class="grid_description_delivery">
-                        Livraison gratuite
-                    </li>
-                </ul>
-            </div>
-            <div class="grid_selectors">
-                <div class="grid_selectors_choices">
-                    <div class="grid_selectors_choices_color">
-                        <b class="uppercase"><label for="color"> Couleur </label></b>
-                        <select class="colors" name="color" onchange="selectChange()">
-                            <option >Choix couleur</option>
-                            <option value="1">Beige</option>
-                            <option value="2">Bordeaux</option>
-                            <option value="3">Bleu Marine</option>
-                            <option value="4">Noir</option>
-                        </select>
+                <div class="grid_selectors">
+                    <div class="grid_selectors_choices">
+                        <div class="grid_selectors_choices_color">
+                            <b class="uppercase"><label for="color"> Couleur </label></b>
+                            <select class="colors" name="color" onchange="selectChange()">
+                                <option >Choix couleur</option>
+                                <option value="1">Beige</option>
+                                <option value="2">Bordeaux</option>
+                                <option value="3">Bleu Marine</option>
+                                <option value="4">Noir</option>
+                            </select>
+                        </div>
+                        <div class="grid_selectors_choices_size">
+                            <b class="uppercase"><label for="size"> Taille </label></b>
+                            <select class="size" name="size" onchange="selectChange()">
+                                <option>Taille</option>
+                                <option value="xs">XS</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                                <option value="xxl">XXL</option>
+                            </select>
+                        </div>
+                        <div class="grid_selectors_choices_quantity">
+                            <b class="uppercase"><label for="quantity"> Qté </label></b>
+                            <select class="quantities" name="quantity" onchange="selectChange()">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="grid_selectors_choices_size">
-                        <b class="uppercase"><label for="size"> Taille </label></b>
-                        <select class="size" name="size" onchange="selectChange()">
-                            <option>Taille</option>
-                            <option value="xs">XS</option>
-                            <option value="s">S</option>
-                            <option value="m">M</option>
-                            <option value="l">L</option>
-                            <option value="xl">XL</option>
-                            <option value="xxl">XXL</option>
-                        </select>
+                    <br/>
+                    <div class="grid_add_to">
+                        <button type="button" class="grid_add_to_cart" onclick="addToCart()" disabled>Ajouter au panier</button>
+                        <button type="button" class="grid_add_to_favorite">Ajouter aux favoris</button>
                     </div>
-                    <div class="grid_selectors_choices_quantity">
-                        <b class="uppercase"><label for="quantity"> Qté </label></b>
-                        <select class="quantities" name="quantity" onchange="selectChange()">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-                <br/>
-                <div class="grid_add_to">
-                    <button type="button" class="grid_add_to_cart" onclick="addToCart()" disabled>Ajouter au panier</button>
-                    <button type="button" class="grid_add_to_favorite">Ajouter aux favoris</button>
                 </div>
             </div>
             <div class="grid_more">
@@ -164,23 +172,22 @@
                         Ces produits pourraient compléter votre look....
                     </div>
                     <div class="grid_more_header_sort">
-                        <div class="grid_more_header_sort_up" onclick="sort('down')">
+                        <div class="grid_more_header_sort_up" onclick="sort('desc')">
                             Prix croissant
                         </div>
                         <div class="grid_more_header_sort_separation"></div>
-                        <div class="grid_more_header_sort_down" onclick="sort('up')">
+                        <div class="grid_more_header_sort_down" onclick="sort('asc')">
                             Prix croissant
                         </div>
                     </div>
                 </div>
-                <div class="grid_more_header_content">
+                <div class="grid_more_content">
                     
                 </div>
             </div>
         </div>
         <div class="footer">
-            Made with love by Chafik EL IDRISSI - Make sure tat you won't buy anythng from there, it's just a fake !
+            Made with love by Chafik EL IDRISSI - Make sure that you won't buy anythng from there, it's just a fake !
         </div>
     </body>
-    
 </html>

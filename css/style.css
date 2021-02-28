@@ -9,6 +9,13 @@ html, body {
     margin: 0;
     padding: 0;
 }
+select{
+    width: 90%;
+    padding: 5px 0px 5px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    appearance: auto;
+}
 .banner {
     padding: 5px;
 }
@@ -39,13 +46,6 @@ html, body {
     left: 0;
     width: 100%;
 }
-.cart_frame {
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border: 2px black solid;
-    width: max-content;
-}
 .homemade-sticky {
     position: fixed;
     top: 0;
@@ -59,14 +59,6 @@ html, body {
 .uppercase{
     text-transform: uppercase;
 }
-select{
-    width: 90%;
-    padding: 5px 0px 5px 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    appearance: auto;
-
-}
 .grid_header {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -78,6 +70,7 @@ select{
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 1fr;
     grid-gap: 10px;
     padding-left: 20%;
     padding-right: 20%;
@@ -100,6 +93,13 @@ select{
     text-align: center;
     text-transform: uppercase;
     margin-left: auto;
+}
+.grid_header_cart_frame {
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 2px black solid;
+    width: max-content;
 }
 .grid_header_menu {
     grid-column: 1/11;
@@ -148,10 +148,30 @@ select{
     grid-column: 1/9;
     grid-row: 4/5;
     text-align: center;
-    margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.grid_left_pane{
+    grid-column: 9/13;
+    grid-row: 1/4;
+    display: grid;
+    position: relative;
+}
+.grid_more {
+    grid-column: 1/13;
+    grid-row: 5/13;
+    max-width: 100%;
+    display: grid;
+    grid-auto-rows: 5vh;
+    
+}
+.grid_add_to{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
 }
 .carrousel-cursor {
     cursor: pointer;
@@ -161,9 +181,9 @@ select{
     opacity: 0.6;
 }
 .grid_description {
-    grid-column: 9/13;
     grid-row: 1/3;
-    max-width: 100%
+    max-width: 100%;
+    height: fit-content;
 }
 .grid_description_title{
     font-size: 25px;
@@ -172,21 +192,9 @@ select{
 .grid_description_price{
     font-size: x-large;
 }
-.grid_description_informations{
-
-}
 .grid_description_text{
     font-size: medium;
     hyphens: auto;
-}
-.grid_description_characteristics{
-
-}
-.grid_selectors {
-    grid-column: 9/13;
-    grid-row: 3;
-    max-width: 100%;
-    position: relative;
 }
 .grid_selectors_choices {
     display: grid;
@@ -206,13 +214,6 @@ select{
 }
 b ~ select{
     margin-top: 10px;
-}
-.grid_add_to{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 .grid_add_to_cart {
     grid-column: 1/2;
@@ -249,17 +250,9 @@ b ~ select{
     transition: 0.3s;
     background-color: #bdbdbd;
 }
-.grid_more {
-    grid-column: 1/13;
-    grid-row: 5/16;
-    max-width: 100%;
-    display: grid;
-    grid-auto-rows: 5vh;
-}
 .grid_more_header{
     background-color: #453D3B;
     color: white;
-    grid-row: 1/2;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
@@ -275,6 +268,11 @@ b ~ select{
     display: flex;
     justify-content: center;
 }
+.grid_more_header_sort_up , .grid_more_header_sort_down{
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
 .grid_more_header_sort_separation{
     border-left-color: white;
     border-left-style: solid;
@@ -283,15 +281,14 @@ b ~ select{
     margin-left: 5px;
     margin-right: 5px;
 }
-.grid_more_header_content{
-    grid-row: 2/19;
+.grid_more_content{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 25px;
     padding-top: 25px;
 }
-.grid_more_header_content_product{
+.grid_more_content_product{
     max-width: 100%;
     max-height: 100%;
     display: grid;
@@ -299,23 +296,23 @@ b ~ select{
     border: 1px solid #453D3B;
     position: relative;
 }
-.grid_more_header_content_product_price{
+.grid_more_content_product_price{
     position: absolute;
     right: 0;
     top: 4%;
 }
-.grid_more_header_content_product_price div{
+.grid_more_content_product_price div{
     background: #453D3B;
     color: white;
 }
-.grid_more_header_content_product_price_ttc{
+.grid_more_content_product_price_ttc{
     font-size: larger;
     padding-left: 10px;
     padding-right: 5px;
     padding-bottom: 2px;
     padding-top: 2px;
 }
-.grid_more_header_content_product_price_ht{
+.grid_more_content_product_price_ht{
     width: max-content;
     float: right;
     font-size: small;
@@ -324,32 +321,30 @@ b ~ select{
     padding-bottom: 2px;
     padding-top: 2px;
 }
-.grid_more_header_content_product_image{
-    width: 60%;
+.grid_more_content_product_image{
+    max-width: 60%;
+    max-height: 90%;
     grid-row: 1/4;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-top: auto;
+    margin: auto;
     padding-top: 20px;
 }
-.grid_more_header_content_product_text{
+.grid_more_content_product_text{
     grid-row: 4/5;
     font-weight: bolder;
     margin-left: 21px;
     margin-right: 21px;
-    padding-top: 25px;
     height: fit-content;
     text-align: center;
 }
-.grid_more_header_content_product_add_to_cart{
+.grid_more_content_product_add_to_cart{
     background-color: #453D3B;
     border-width: 0;
     color: white;
-    font-size: large;
+    font-size: medium;
     text-transform: uppercase;
     margin: 21px;
     margin-top: 0;
+    padding: 10px;
 }
 .footer{
     border-top: 1px solid #b5b5b5;

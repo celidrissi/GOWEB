@@ -19,7 +19,7 @@ class Product{
 
     getTitleCroped(){
         // Titre raccourci // '...' si le titre est raccouci
-        return this.title.substring(0, 30) + (this.title.length >= 30 && '...');
+        return this.title.substring(0, 20) + (this.title.length >= 20 && '...');
     }
     
     getPriceTTC(){

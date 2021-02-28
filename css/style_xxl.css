@@ -1,0 +1,6 @@
+@media (min-width: 2000px) {
+    .grid_selectors {
+        grid-row: 3;
+        height: 100%;
+    }
+}

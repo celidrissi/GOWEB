@@ -1,0 +1,7 @@
+@media (min-width: 1000px) and (max-width: 1100px) {
+    /* For mobile big phones and tablet: */
+    .grid{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
