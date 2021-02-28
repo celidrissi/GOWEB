@@ -185,9 +185,6 @@ function callApi(){
 if (online = navigator.onLine){
     callApi();
 } else {
-    console.log('Mode Hors-Ligne');
-    // Dans le cas où il n'y à pas de connexion internet on importe des données locales
-    var offline_data = require('../json/products.json');
-    callApi(require(offline_data));
+    alert('Il s\'emblerait  que vous n\'ayez pas de connexion internet');
 }
 
