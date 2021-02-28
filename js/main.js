@@ -102,6 +102,11 @@ function setUpMoreProducts(){
     }
 }
 
+// Affichage du produit séléctionné
+function showProduct(id){
+    var name = assetsMainNames[id];
+    document.querySelector('.grid_preview_main').firstChild.src = './assets/' + name;
+}
 
 // SetUp des zonnes d'affichage
 function setUpMain(){
@@ -115,8 +120,8 @@ function setUpCarrousel(){
         var name = assetsMainNames[i]
         // Affichage des photos dans la zone secondaire
         var el = document.createElement('div')
-        el.className = 'carrousel-thumnbail carrousel-cursor';
-        el.innerHTML = '<img class="carrousel-thumnbail carrousel-cursor" style="width:100%;" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
+        el.className = 'grid_preview_second_thumnbail grid_preview_second_cursor';
+        el.innerHTML = '<img class="grid_preview_second_thumnbail grid_preview_second_cursor" style="width:100%;" src="./assets/' + name + '"onclick="showProduct('+ i + ')" alt="' + name + '">'
         document.querySelector('.grid_preview_second').innerHTML += el.innerHTML;
     }
 }
